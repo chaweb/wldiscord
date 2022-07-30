@@ -47,6 +47,8 @@ ${name}`
       })
     .then(response => response)
     .catch(err => console.error(err));
+    
+    delete(file)
 }
 
 async function delLigne(name){
@@ -70,6 +72,7 @@ ${name}`
       })
     .then(response => response)
     .catch(err => console.error(err));
+    delete(file)
 }
 
 
