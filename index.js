@@ -111,14 +111,13 @@ client.on('interactionCreate', async interaction => {
     const { commandName } = interaction;
 
     if (commandName === 'wl') {
-        const state = interaction.options.getString('état') == 'true' ? true : false ;
         const name = interaction.options.getString('nom') + ' ' + interaction.options.getString('prénom');
         if(!interaction.member.roles.cache.some(r => r.name === rolePerm)){
             await interaction.reply({ content: `vous n'avez pas la permission d'utiliser cette commande`, ephemeral: true });
             logger.log('error', `${interaction.user.tag}(id: ${interaction.user.id}) not have permission`)
             return
         }
-        if(state){ //add name on wl
+        if(interaction.options.getString('état') == true){ //add name on wl
             addLigne(name)
             await interaction.reply({ content: `${name} à été rajouter dans la whitelist`, ephemeral: true });
             logger.log('info', `+ ${name} by ${interaction.user.tag}(id: ${interaction.user.id})`)
